@@ -1,0 +1,1984 @@
+---
+title: "Cereals"
+author: "Sameer"
+date: "March 7, 2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+#              #######---  PROJECT I - CEREALS  ---#######
+# Scope of the Project - EDA (Exploratory Data Analysis)
+
+# Introduction to EDA (Exploratory Data Analysis)---
+# EDA is a data analysis approach. There are totally three popular data analysis 
+# approaches as enlisted below:---
+
+# a) Classical
+# b) Exploratory (EDA)
+# c) Bayesian
+
+# Paradigms for Analysis techniques---
+# These three approaches are similar in that they all start with a 
+# general science/engineering problem and all yield science/engineering # conclusions. The difference is the sequence and focus of the 
+# intermediate steps. 
+  
+# a) For classical analysis, the sequence is---
+# Problem => Data => Model => Analysis => Conclusions 
+
+# b) For EDA, the sequence is---
+# Problem => Data => Analysis => Model => Conclusions 
+
+# c) For Bayesian, the sequence is---
+# Problem => Data => Model => Prior Distribution => Analysis => 
+# Conclusions
+
+# Salient features of EDA (Exploratory Data Analysis)---
+# i) Model - The Exploratory Data Analysis approach does not impose 
+# deterministic or probabilistic models on the data. On the contrary,
+# the EDA approach allows the data to suggest admissible models that 
+# best fit the data. 
+
+# ii) Focus - For exploratory data analysis (EDA), the focus is on the # data--its structure, outliers, and models suggested by the data. 
+
+# iii) Techniques - EDA techniques are generally graphical. They 
+# include scatter plots, character plots, box plots, histograms, bihistograms, probability plots, residual plots, and mean plots. 
+
+# iv) Rigor - EDA techniques do not share in that rigor or formality. 
+# EDA techniques make up for that lack of rigor by being very 
+# suggestive, indicative, and insightful about what the appropriate 
+# model should be.
+
+# EDA techniques are subjective and depend on interpretation which may 
+# differ from analyst to analyst, although experienced analysts 
+# commonly arrive at identical conclusions. 
+
+# v) Data Treatment - The EDA approach, on the other hand, often makes 
+# use of (and shows) all of the available data. In this sense there is 
+# no corresponding loss of information. 
+
+# vi) Many EDA techniques make little or no assumptions--they present 
+# and show the data--all of the data--as is, with fewer encumbering
+# assumptions. 
+
+# vii)Applications of EDA (Exploratory Data Analysis)---
+# a) EDA has as its broadest goal the desire to gain insight into the 
+# engineering/scientific process behind the data.
+# b) EDA is active and futuristic. 
+
+# viii) Goals of EDA (Exploratory Data Analysis)---
+# The primary goal of EDA is to maximize the analyst's insight into a 
+# dataset and into the underlying structure of a data set, while 
+# providing all of the specific items that an analyst would want to 
+# extract from a data set, such as:
+
+# 1) a good-fitting, parsimonious model
+# 2) a list of outliers
+# 3) a sense of robustness of conclusions
+# 4) estimates for parameters
+# 5) uncertainties for those estimates
+# 6) a ranked list of important factors
+# 7) conclusions as to whether individual factors are statistically 
+#    significant
+# 8) optimal settings
+
+# iX) Data Insights - Insight implies detecting and uncovering 
+# underlying structure 
+# in the data. Such underlying structure may not be encapsulated in the
+# list of items above; such items serve as the specific targets of an 
+# analysis, The "feel" for the data comes almost exclusively from the
+# application of various graphical techniques, the collection of which
+# serves as the window into the essence of the data. Graphics are
+# irreplaceable--there are no quantitative analogues that will give the
+# same insight as well-chosen graphics.
+
+# Statistics and data analysis procedures can broadly be split into two 
+# parts:
+  # 1) Quantitative
+  # 2) Graphical 
+
+# 1) Quantitative -	Quantitative techniques are the set of statistical 
+# procedures that yield numeric or tabular output. Examples of quantitative 
+# techniques include:
+  
+# a) Hypothesis testing
+# b) Analysis of variance
+# c) Point estimates and confidence intervals
+# d) Least squares regression 
+
+# These and similar techniques are all valuable and are mainstream in
+# terms of classical analysis. 
+
+# 2) Graphical - On the other hand, there is a large collection of
+# statistical tools that we generally refer to as graphical techniques. 
+# These include:
+  
+# a) Scatter plots
+# b) Histograms
+# c) Probability plots
+# d) Residual plots
+# e) Box plots
+# f) Block plots 
+
+# EDA Approach Relies Heavily on Graphical Techniques--- 	
+# The EDA approach relies heavily on these and similar graphical 
+# techniques. 
+# Such graphical tools are the shortest path to gaining insight into a
+# dataset in terms of the following---
+
+# a) testing assumptions
+# b) model selection
+# c) model validation
+# d) estimator selection
+# e) relationship identification
+# f) factor effect determination
+# g) outlier detection 
+
+# If one is not using statistical graphics, then one is forfeiting
+# insights into one or more aspects of the underlying structure of the # data.
+
+```{r cars, echo = TRUE}
+
+```
+
+```{r pressure}
+plot(pressure)
+```
+## Global R Codes---
+```{r}
+(package="datasets")
+# to prevent strings or characters being converted to Factors
+options(stringsAsFactors=FALSE)
+# to prevent conversion of mathematical values to scientific/exponential values
+options(scipen=999)
+```
+# Importing & Execution of the packages in R environment---
+```{r}
+library(varhandle)
+library(magrittr)
+library(googlesheets)
+library(gsheet)
+library(data.table)
+library(googleVis)
+library(knitr)
+library(summarytools)
+library(descr)
+library(gmodels)
+library(Deducer)
+library(plyr)
+library(agricolae)
+library(prettyR)
+library(reporttools)
+library(stringi)
+library(corrplot)
+library(gclus)
+library(caTools)
+library(Hmisc)
+library(e1071)
+library(lmtest)
+library(car)
+library(MASS)
+library(ggpubr)
+library(caret)
+library(DAAG)
+library(Metrics)
+library(usdm)
+library(dplyr)
+library(sqldf)
+library(graphics)
+library(ggplot2)
+library(mlbench)
+library(multcomp)
+library(utils)
+library(rcompanion)
+library(scales)
+library(nortest)
+library(RcmdrMisc)
+```
+# Importing the dataset into R environment---
+```{r}
+Cereals<-read.csv("C://Users/User/Documents/R/R Projects/Cereals.csv",  header = TRUE, sep=",", stringsAsFactors=FALSE)
+View(Cereals)
+
+Cereals<-read.csv("E://Back up 1/ACADGILD/Dr Vinod/Project I - Cereals_practice.csv", header = TRUE, sep=",", stringsAsFactors=FALSE)
+View(Cereals)
+
+setwd("C://Users/User/Documents/R/R Projects")
+install.packages("xlsx")
+library(xlsx)
+require(xlsx)
+require(ggplot2)
+
+setwd("E://Back up 1/ACADGILD/DrVinod")
+Cereals<-read.xlsx("Cereals_practice.xlsx",sheetIndex = 1)
+View(Cereals)
+```
+# Know your data---
+```{r}
+names(Cereals) # Lists the names of the variables in the given dataset
+nrow(Cereals) # To find the Number of rows 
+ncol(Cereals) # To find the number of Columns
+dim(Cereals) # To display the dimensions of the given table (i.e. Rows 
+# and Columns) at a glance
+str(Cereals) # To list the structure of the given Dataset
+class(Cereals) # To find the structure of the given dataset using R 
+# tool
+attributes(Cereals) # To find the Row Names, Column Names and the given 
+# dataset structure
+```
+# To check for the Missing Values & their Identification---
+```{r}
+colSums(is.na(Cereals))
+# OR---
+sapply(Cereals, function(y) sum(is.na(y)))
+# OR---
+sum(complete.cases(Cereals))
+sum(!complete.cases(Cereals))
+# OR ---
+sum(is.na(Cereals$name))
+sum(is.na(Cereals$mfr))
+sum(is.na(Cereals$type))
+sum(is.na(Cereals$calories))
+sum(is.na(Cereals$protein))
+sum(is.na(Cereals$sodium))
+sum(is.na(Cereals$fiber))
+sum(is.na(Cereals$carbo)) # 1 missing value
+sum(is.na(Cereals$sugars)) # 1 missing value
+sum(is.na(Cereals$potass)) # 2 missing values
+sum(is.na(Cereals$vitamins))
+sum(is.na(Cereals$shelf))
+sum(is.na(Cereals$weight))
+sum(is.na(Cereals$cups))
+sum(is.na(Cereals$rating))
+
+# To check for Row-Numbers with NA specified/Missing values---
+unique (unlist (lapply (Cereals, function (x) which (is.na (x)))))
+which(is.na(Cereals), arr.ind=TRUE)
+
+# Checking for % of missing value columnwise--- 
+round(colSums(is.na(Cereals))/nrow(Cereals),4)*100
+
+# OR---
+
+# To check for  % of missing value  in the overall dataset---
+# a) To check for Total Number of records 
+nRows = nrow(Cereals)
+# b) Total Number of records without any missing values 
+nComplete = sum(complete.cases(Cereals))
+nComplete
+# c) Calculation regarding the % of Loss of Data in case if the missing values # are deleted
+dataLoss = (1- nComplete/nRows)*100 
+dataLoss
+
+# Check missing data pattern & Visualization-----
+library(mice)
+md.pattern(Cereals)
+
+# Visulize the missing data pattern--- 
+library(VIM)
+
+aggr(Cereals)
+
+mice_plot <- aggr(Cereals[,c("carbo","sugars","potass")],   
+                  col=c('darkgreen','yellow'),
+                  numbers=TRUE, sortVars=TRUE,
+                  labels=c("Carbo","Sugars","Potassium"),                   cex.axis=.7,gap=3, ylab=c("Missing data","Pattern"))
+```
+# To deal with the Missing Values/Treatment of Missing values 
+# by using Mean-Imputation Method---
+```{r}
+library(Hmisc)
+# carbo<-round(impute(Cereals$carbo, mean),1)
+# sugars<-round(impute(Cereals$sugars,mean),1)
+# potass<-round(impute(Cereals$potass,mean),1)
+
+# carbo
+# sugars
+# potass
+
+#Replacement of the Missing values with the Mean Imputation Method---
+
+Cereals$carbo<- round(ifelse(is.na(Cereals$carbo), mean(Cereals$carbo, na.rm=TRUE), Cereals$carbo),1)
+Cereals$carbo
+Cereals$sugars<- round(ifelse(is.na(Cereals$sugars), mean(Cereals$sugars, na.rm=TRUE), Cereals$sugars),1)
+Cereals$sugars
+Cereals$potass<- round(ifelse(is.na(Cereals$potass), mean(Cereals$potass, na.rm=TRUE), Cereals$potass),1)
+Cereals$potass
+
+# transform(Cereals, y = ifelse(is.na(carbo), mean(carbo, na.rm=TRUE), y))
+#is.na(Cereals$carbo) 
+
+View(Cereals)
+
+```
+# To find Outliers in the dataset---
+```{r}
+library(outliers)
+
+#Only select those columns having Numeric values---
+cereal_val<-Cereals[, 4:16]
+View(cereal_val)
+
+# Or ----
+
+cereal_val <- sapply(Cereals, is.numeric)
+cereal_val <- Cereals[,cereal_val]
+View(cereal_val)
+
+
+# Detection of Outliers---
+# a) Identification of Outliers and corresponding row-numbers---
+outlier_tf=outlier(Cereals$calories,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$protein,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$fat,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$sodium,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$fiber,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$carbo,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$sugars,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$potass,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$vitamins,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$shelf,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$weight,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$cups,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+outlier_tf=outlier(Cereals$rating,logical=TRUE)
+outlier_tf
+find_outlier = which(outlier_tf==TRUE,arr.ind=TRUE)
+find_outlier
+
+
+# b) Using lofactor() under package DMwR
+
+library(DMwR)
+outlier.scores.lof <- lofactor(cereal_val, k=5)
+outlier.scores.lof
+
+outliers_detect<-print(cereal_val[which(outlier.scores.lof > 1.5), ])
+outliers_detect
+
+# c) Creating a function to detect outliers via Boxplot---
+box <- function(df){
+  #outlier detection using boxplot
+  outliers <- c()
+  for(i in 1:ncol(df)){
+    box <- boxplot(df[,i])
+    for(j in 1:length(box$out)){
+      a = which(df[,i] == box$out[j])
+      if(length(a) == 1){
+        outliers[length(outliers) + 1] <- a 
+      }
+    }
+  }
+  return(unique(outliers))
+  #outliers
+}
+
+box(cereal_val)
+
+# c) User defined script---
+source("http://goo.gl/UUyEzD")
+outlierKD(Cereals, calories)
+outlierKD(Cereals, protein)
+outlierKD(Cereals, fat)
+outlierKD(Cereals, sodium)
+outlierKD(Cereals, fiber)
+outlierKD(Cereals, carbo)
+outlierKD(Cereals, sugars)
+outlierKD(Cereals, potass)
+outlierKD(Cereals, vitamins)
+outlierKD(Cereals, shelf)
+outlierKD(Cereals, weight)
+outlierKD(Cereals, cups)
+outlierKD(Cereals, rating)
+```
+# Treatment of Outliers---
+```{r}
+# a) User-defined function for Scoping of Outliers---
+fun <- function(x){
+  quantiles <- quantile( x, c(.05, .95 ) )
+  print(quantiles)
+  x[ x < quantiles[1] ] <- quantiles[1]
+  x[ x > quantiles[2] ] <- quantiles[2]
+  x
+}
+
+fun(Cereals$calories)
+fun(Cereals$protein)
+fun(Cereals$fat)
+fun(Cereals$sodium)
+fun(Cereals$fiber)
+fun(Cereals$carbo)
+fun(Cereals$sugars)
+fun(Cereals$potass)
+fun(Cereals$vitamins)
+fun(Cereals$shelf)
+fun(Cereals$weight)
+fun(Cereals$cups)
+fun(Cereals$rating)
+
+# Or ---
+# b) Dealing with Outliers/Median Imputation---
+
+cereal_val<-rm.outlier(cereal_val, fill = TRUE, median = TRUE, opposite = FALSE)
+cereal_val
+View(cereal_val)
+
+
+qplot(data=Cereals, x=carbo, y=calories)
+```
+# Descriptive Statistics of the given dataset---
+```{r}
+# summary() # - it gives the following output--
+# i) numeric variables: minimum, maximum, mean, median, and the first (25%) and third (75%) quartiles
+# ii) categorical variables (factors): frequency of every level
+
+summary(Cereals)
+# OR -----
+library(Hmisc)
+# describe() - Under Hmisc package, describe() generates the following 
+# outcome viz.:
+# n, nmiss, unique, mean, 5,10,25,50,75,90,95th percentiles
+# 5 lowest and 5 highest scores
+describe(Cereals)
+
+library(psych)
+# Under psych package,describe() generates the following outcome viz.:
+# vars  n   mean  sd median trimmed   mad   min   max  range  skew kurtosis
+describe(Cereals)
+
+library(pastecs)
+# Under pastecs packgage,stat.desc() generates the following outcome viz.:
+# nbr.val, nbr.null, nbr.na, min max, range, sum,
+# median, mean, SE.mean, CI.mean, var, std.dev, coef.var
+stat.desc(Cereals)
+
+```
+# To find n values or Frequencies---
+```{r}
+table(Cereals$name)
+table(Cereals$mfr)
+table(Cereals$type)
+
+# To find 2-Way Frequencies/Counts(n)----
+
+table(Cereals$mfr, Cereals$name)
+table(Cereals$type, Cereals$name)
+table(Cereals$calories, Cereals$name)
+table(Cereals$protein, Cereals$name)
+table(Cereals$fat, Cereals$name)
+table(Cereals$sodium, Cereals$name)
+table(Cereals$fiber, Cereals$name)
+table(Cereals$carbo, Cereals$name)
+table(Cereals$sugars, Cereals$name)
+table(Cereals$potass, Cereals$name)
+table(Cereals$vitamins, Cereals$name)
+table(Cereals$shelf, Cereals$name)
+table(Cereals$weight, Cereals$name)
+table(Cereals$cups, Cereals$name)
+table(Cereals$rating, Cereals$name)
+
+
+table(Cereals$name, Cereals$mfr)
+table(Cereals$mfr, Cereals$mfr)
+table(Cereals$type, Cereals$mfr)
+table(Cereals$calories, Cereals$mfr)
+table(Cereals$protein, Cereals$mfr)
+table(Cereals$fat, Cereals$mfr)
+table(Cereals$sodium, Cereals$mfr)
+table(Cereals$fiber, Cereals$mfr)
+table(Cereals$carbo, Cereals$mfr)
+table(Cereals$sugars, Cereals$mfr)
+table(Cereals$potass, Cereals$mfr)
+table(Cereals$vitamins, Cereals$mfr)
+table(Cereals$shelf, Cereals$mfr)
+table(Cereals$weight, Cereals$mfr)
+table(Cereals$cups, Cereals$mfr)
+table(Cereals$rating, Cereals$mfr)
+
+table(Cereals$name, Cereals$type)
+table(Cereals$mfr, Cereals$type)
+table(Cereals$type, Cereals$type)
+table(Cereals$calories, Cereals$type)
+table(Cereals$protein, Cereals$type)
+table(Cereals$fat, Cereals$type)
+table(Cereals$sodium, Cereals$type)
+table(Cereals$fiber, Cereals$type)
+table(Cereals$carbo, Cereals$type)
+table(Cereals$sugars, Cereals$type)
+table(Cereals$potass, Cereals$type)
+table(Cereals$vitamins, Cereals$type)
+table(Cereals$shelf, Cereals$type)
+table(Cereals$weight, Cereals$type)
+table(Cereals$cups, Cereals$type)
+table(Cereals$rating, Cereals$type)
+
+
+table(Cereals$name, Cereals$calories)
+table(Cereals$mfr, Cereals$calories)
+table(Cereals$type, Cereals$calories)
+table(Cereals$calories, Cereals$calories)
+table(Cereals$protein, Cereals$calories)
+table(Cereals$fat, Cereals$calories)
+table(Cereals$sodium, Cereals$calories)
+table(Cereals$fiber, Cereals$calories)
+table(Cereals$carbo, Cereals$calories)
+table(Cereals$sugars, Cereals$calories)
+table(Cereals$potass, Cereals$calories)
+table(Cereals$vitamins, Cereals$type)
+table(Cereals$shelf, Cereals$calories)
+table(Cereals$weight, Cereals$calories)
+table(Cereals$cups, Cereals$calories)
+table(Cereals$rating, Cereals$calories)
+
+
+table(Cereals$name, Cereals$protein)
+table(Cereals$mfr, Cereals$protein)
+table(Cereals$type, Cereals$protein)
+table(Cereals$calories, Cereals$protein)
+table(Cereals$protein, Cereals$protein)
+table(Cereals$fat, Cereals$protein)
+table(Cereals$sodium, Cereals$protein)
+table(Cereals$fiber, Cereals$protein)
+table(Cereals$carbo, Cereals$protein)
+table(Cereals$sugars, Cereals$protein)
+table(Cereals$potass, Cereals$protein)
+table(Cereals$vitamins, Cereals$protein)
+table(Cereals$shelf, Cereals$protein)
+table(Cereals$weight, Cereals$protein)
+table(Cereals$cups, Cereals$protein)
+table(Cereals$rating, Cereals$protein)
+
+table(Cereals$name, Cereals$fat)
+table(Cereals$mfr, Cereals$fat)
+table(Cereals$type, Cereals$fat)
+table(Cereals$calories, Cereals$fat)
+table(Cereals$protein, Cereals$fat)
+table(Cereals$fat, Cereals$fat)
+table(Cereals$sodium, Cereals$fat)
+table(Cereals$fiber, Cereals$fat)
+table(Cereals$carbo, Cereals$fat)
+table(Cereals$sugars, Cereals$fat)
+table(Cereals$potass, Cereals$fat)
+table(Cereals$vitamins, Cereals$fat)
+table(Cereals$shelf, Cereals$fat)
+table(Cereals$weight, Cereals$fat)
+table(Cereals$cups, Cereals$fat)
+table(Cereals$rating, Cereals$fat)
+
+table(Cereals$name, Cereals$sodium)
+table(Cereals$mfr, Cereals$sodium)
+table(Cereals$type, Cereals$sodium)
+table(Cereals$calories, Cereals$sodium)
+table(Cereals$protein, Cereals$sodium)
+table(Cereals$fat, Cereals$sodium)
+table(Cereals$sodium, Cereals$sodium)
+table(Cereals$fiber, Cereals$sodium)
+table(Cereals$carbo, Cereals$sodium)
+table(Cereals$sugars, Cereals$sodium)
+table(Cereals$potass, Cereals$sodium)
+table(Cereals$vitamins, Cereals$sodium)
+table(Cereals$shelf, Cereals$sodium)
+table(Cereals$weight, Cereals$sodium)
+table(Cereals$cups, Cereals$sodium)
+table(Cereals$rating, Cereals$sodium)
+
+table(Cereals$name, Cereals$fiber)
+table(Cereals$mfr, Cereals$fiber)
+table(Cereals$type, Cereals$fiber)
+table(Cereals$calories, Cereals$fiber)
+table(Cereals$protein, Cereals$fiber)
+table(Cereals$fat, Cereals$fiber)
+table(Cereals$sodium, Cereals$fiber)
+table(Cereals$fiber, Cereals$fiber)
+table(Cereals$carbo, Cereals$fiber)
+table(Cereals$sugars, Cereals$fiber)
+table(Cereals$potass, Cereals$fiber)
+table(Cereals$vitamins, Cereals$fiber)
+table(Cereals$shelf, Cereals$fiber)
+table(Cereals$weight, Cereals$fiber)
+table(Cereals$cups, Cereals$fiber)
+table(Cereals$rating, Cereals$fiber)
+
+table(Cereals$name, Cereals$carbo)
+table(Cereals$mfr, Cereals$carbo)
+table(Cereals$type, Cereals$carbo)
+table(Cereals$calories, Cereals$carbo)
+table(Cereals$protein, Cereals$carbo)
+table(Cereals$fat, Cereals$carbo)
+table(Cereals$sodium, Cereals$carbo)
+table(Cereals$fiber, Cereals$carbo)
+table(Cereals$carbo, Cereals$carbo)
+table(Cereals$sugars, Cereals$carbo)
+table(Cereals$potass, Cereals$carbo)
+table(Cereals$vitamins, Cereals$carbo)
+table(Cereals$shelf, Cereals$carbo)
+table(Cereals$weight, Cereals$carbo)
+table(Cereals$cups, Cereals$carbo)
+table(Cereals$rating, Cereals$carbo)
+
+table(Cereals$name, Cereals$sugars)
+table(Cereals$mfr, Cereals$sugars)
+table(Cereals$type, Cereals$sugars)
+table(Cereals$calories, Cereals$sugars)
+table(Cereals$protein, Cereals$sugars)
+table(Cereals$fat, Cereals$sugars)
+table(Cereals$sodium, Cereals$sugars)
+table(Cereals$fiber, Cereals$sugars)
+table(Cereals$carbo, Cereals$sugars)
+table(Cereals$sugars, Cereals$sugars)
+table(Cereals$potass, Cereals$sugars)
+table(Cereals$vitamins, Cereals$sugars)
+table(Cereals$shelf, Cereals$sugars)
+table(Cereals$weight, Cereals$sugars)
+table(Cereals$cups, Cereals$sugars)
+table(Cereals$rating, Cereals$sugars)
+
+table(Cereals$name, Cereals$potass)
+table(Cereals$mfr, Cereals$potass)
+table(Cereals$type, Cereals$potass)
+table(Cereals$calories, Cereals$potass)
+table(Cereals$protein, Cereals$potass)
+table(Cereals$fat, Cereals$potass)
+table(Cereals$sodium, Cereals$potass)
+table(Cereals$fiber, Cereals$potass)
+table(Cereals$carbo, Cereals$potass)
+table(Cereals$sugars, Cereals$potass)
+table(Cereals$potass, Cereals$potass)
+table(Cereals$vitamins, Cereals$potass)
+table(Cereals$shelf, Cereals$potass)
+table(Cereals$weight, Cereals$potass)
+table(Cereals$cups, Cereals$potass)
+table(Cereals$rating, Cereals$potass)
+
+table(Cereals$name, Cereals$vitamins)
+table(Cereals$mfr, Cereals$vitamins)
+table(Cereals$type, Cereals$vitamins)
+table(Cereals$calories, Cereals$vitamins)
+table(Cereals$protein, Cereals$vitamins)
+table(Cereals$fat, Cereals$vitamins)
+table(Cereals$sodium, Cereals$vitamins)
+table(Cereals$fiber, Cereals$vitamins)
+table(Cereals$carbo, Cereals$vitamins)
+table(Cereals$sugars, Cereals$vitamins)
+table(Cereals$potass, Cereals$vitamins)
+table(Cereals$vitamins, Cereals$vitamins)
+table(Cereals$shelf, Cereals$vitamins)
+table(Cereals$weight, Cereals$vitamins)
+table(Cereals$cups, Cereals$vitamins)
+table(Cereals$rating, Cereals$vitamins)
+
+table(Cereals$name, Cereals$shelf)
+table(Cereals$mfr, Cereals$shelf)
+table(Cereals$type, Cereals$shelf)
+table(Cereals$calories, Cereals$shelf)
+table(Cereals$protein, Cereals$shelf)
+table(Cereals$fat, Cereals$shelf)
+table(Cereals$sodium, Cereals$shelf)
+table(Cereals$fiber, Cereals$shelf)
+table(Cereals$carbo, Cereals$shelf)
+table(Cereals$sugars, Cereals$shelf)
+table(Cereals$potass, Cereals$shelf)
+table(Cereals$vitamins, Cereals$shelf)
+table(Cereals$shelf, Cereals$shelf)
+table(Cereals$weight, Cereals$shelf)
+table(Cereals$cups, Cereals$shelf)
+table(Cereals$rating, Cereals$shelf)
+
+table(Cereals$name, Cereals$weight)
+table(Cereals$mfr, Cereals$weight)
+table(Cereals$type, Cereals$weight)
+table(Cereals$calories, Cereals$weight)
+table(Cereals$protein, Cereals$weight)
+table(Cereals$fat, Cereals$weight)
+table(Cereals$sodium, Cereals$weight)
+table(Cereals$fiber, Cereals$weight)
+table(Cereals$carbo, Cereals$weight)
+table(Cereals$sugars, Cereals$weight)
+table(Cereals$potass, Cereals$weight)
+table(Cereals$vitamins, Cereals$weight)
+table(Cereals$shelf, Cereals$weight)
+table(Cereals$weight, Cereals$weight)
+table(Cereals$cups, Cereals$weight)
+table(Cereals$rating, Cereals$weight)
+
+table(Cereals$name, Cereals$cups)
+table(Cereals$mfr, Cereals$cups)
+table(Cereals$calories, Cereals$cups)
+table(Cereals$protein, Cereals$cups)
+table(Cereals$fat, Cereals$cups)
+table(Cereals$sodium, Cereals$cups)
+table(Cereals$fiber, Cereals$cups)
+table(Cereals$carbo, Cereals$cups)
+table(Cereals$sugars, Cereals$cups)
+table(Cereals$potass, Cereals$cups)
+table(Cereals$vitamins, Cereals$cups)
+table(Cereals$shelf, Cereals$cups)
+table(Cereals$cups, Cereals$cups)
+table(Cereals$rating, Cereals$cups)
+
+table(Cereals$name, Cereals$rating)
+table(Cereals$mfr, Cereals$rating)
+table(Cereals$calories, Cereals$rating)
+table(Cereals$protein, Cereals$rating)
+table(Cereals$fat, Cereals$rating)
+table(Cereals$sodium, Cereals$rating)
+table(Cereals$fiber, Cereals$rating)
+table(Cereals$carbo, Cereals$rating)
+table(Cereals$sugars, Cereals$rating)
+table(Cereals$potass, Cereals$rating)
+table(Cereals$vitamins, Cereals$rating)
+table(Cereals$shelf, Cereals$rating)
+table(Cereals$cups, Cereals$rating)
+table(Cereals$rating, Cereals$rating)
+```
+# Other Descriptive Statistics---
+# Measures of Central Tendency---
+```{r}
+# Mean
+mean(Cereals$calories)
+mean(Cereals$protein)
+mean(Cereals$fat)
+mean(Cereals$sodium)
+mean(Cereals$fiber)
+mean(Cereals$carbo)
+mean(Cereals$sugars)
+mean(Cereals$potass)
+mean(Cereals$vitamins)
+mean(Cereals$shelf)
+mean(Cereals$weight)
+mean(Cereals$cups)
+mean(Cereals$rating)
+
+# Median---
+median(Cereals$calories)
+median(Cereals$protein)
+median(Cereals$fat)
+median(Cereals$sodium)
+median(Cereals$fiber)
+median(Cereals$carbo)
+median(Cereals$sugars)
+median(Cereals$potass)
+median(Cereals$vitamins)
+median(Cereals$shelf)
+median(Cereals$weight)
+median(Cereals$cups)
+median(Cereals$rating)
+
+# Mode---
+mode <- function(x) {
+  fx <- unique(x)
+  fx[which.max(tabulate(match(x, fx)))]
+}
+
+mode(Cereals$calories)
+mode(Cereals$protein)
+mode(Cereals$fat)
+mode(Cereals$sodium)
+mode(Cereals$fiber)
+mode(Cereals$carbo)
+mode(Cereals$sugars)
+mode(Cereals$potass)
+mode(Cereals$vitamins)
+mode(Cereals$shelf)
+mode(Cereals$weight)
+mode(Cereals$cups)
+mode(Cereals$rating)
+
+# OR---
+
+# Alternative Code----
+mode <- function(x) {
+  if (is.numeric(x)) {
+    x_vector <- table(x)
+    return(as.numeric(names(x_vector)[which.max(x_vector)]))
+  }
+}
+
+mode(Cereals$calories)
+mode(Cereals$protein)
+mode(Cereals$fat)
+mode(Cereals$sodium)
+mode(Cereals$fiber)
+mode(Cereals$carbo)
+mode(Cereals$sugars)
+mode(Cereals$potass)
+mode(Cereals$vitamins)
+mode(Cereals$shelf)
+mode(Cereals$weight)
+mode(Cereals$cups)
+mode(Cereals$rating)
+
+# Min---
+min(Cereals$calories)
+min(Cereals$protein)
+min(Cereals$fat)
+min(Cereals$sodium)
+min(Cereals$fiber)
+min(Cereals$carbo)
+min(Cereals$sugars)
+min(Cereals$potass)
+min(Cereals$vitamins)
+min(Cereals$shelf)
+min(Cereals$weight)
+min(Cereals$cups)
+min(Cereals$rating)
+
+# Max---
+max(Cereals$calories)
+max(Cereals$protein)
+max(Cereals$fat)
+max(Cereals$sodium)
+max(Cereals$fiber)
+max(Cereals$carbo)
+max(Cereals$sugars)
+max(Cereals$potass)
+max(Cereals$vitamins)
+max(Cereals$shelf)
+max(Cereals$weight)
+max(Cereals$cups)
+max(Cereals$rating)
+```
+# Measures of Dispersion---
+```{r}
+#Range---
+range(Cereals$calories)
+range(Cereals$protein)
+range(Cereals$fat)
+range(Cereals$sodium)
+range(Cereals$fiber)
+range(Cereals$carbo)
+range(Cereals$sugars)
+range(Cereals$potass)
+range(Cereals$vitamins)
+range(Cereals$shelf)
+range(Cereals$weight)
+range(Cereals$cups)
+range(Cereals$rating)
+
+# Quartile---
+quantile(Cereals$calories)
+quantile(Cereals$protein)
+quantile(Cereals$fat)
+quantile(Cereals$sodium)
+quantile(Cereals$fiber)
+quantile(Cereals$carbo)
+quantile(Cereals$sugars)
+quantile(Cereals$potass)
+quantile(Cereals$vitamins)
+quantile(Cereals$shelf)
+quantile(Cereals$weight)
+quantile(Cereals$cups)
+quantile(Cereals$rating)
+
+# IQR (Inter-Quantile Range)---
+IQR(Cereals$calories)
+IQR(Cereals$protein)
+IQR(Cereals$fat)
+IQR(Cereals$sodium)
+IQR(Cereals$fiber)
+IQR(Cereals$carbo)
+IQR(Cereals$sugars)
+IQR(Cereals$potass)
+IQR(Cereals$vitamins)
+IQR(Cereals$shelf)
+IQR(Cereals$weight)
+IQR(Cereals$cups)
+IQR(Cereals$rating)
+
+# Standard Deviation---
+sd(Cereals$calories)
+sd(Cereals$protein)
+sd(Cereals$fat)
+sd(Cereals$sodium)
+sd(Cereals$fiber)
+sd(Cereals$carbo)
+sd(Cereals$sugars)
+sd(Cereals$potass)
+sd(Cereals$vitamins)
+sd(Cereals$shelf)
+sd(Cereals$weight)
+sd(Cereals$cups)
+sd(Cereals$rating)
+
+# Variance---
+var(Cereals$calories)
+var(Cereals$protein)
+var(Cereals$fat)
+var(Cereals$sodium)
+var(Cereals$fiber)
+var(Cereals$carbo)
+var(Cereals$sugars)
+var(Cereals$potass)
+var(Cereals$vitamins)
+var(Cereals$shelf)
+var(Cereals$weight)
+var(Cereals$cups)
+var(Cereals$rating)
+
+# Skewness---
+skewness(Cereals$calories)
+skewness(Cereals$protein)
+skewness(Cereals$fat)
+skewness(Cereals$sodium)
+skewness(Cereals$fiber)
+skewness(Cereals$carbo)
+skewness(Cereals$sugars)
+skewness(Cereals$potass)
+skewness(Cereals$vitamins)
+skewness(Cereals$shelf)
+skewness(Cereals$weight)
+skewness(Cereals$cups)
+skewness(Cereals$rating)
+
+# Kurtosis---
+kurtosis(Cereals$calories)
+kurtosis(Cereals$protein)
+kurtosis(Cereals$fat)
+kurtosis(Cereals$sodium)
+kurtosis(Cereals$fiber)
+kurtosis(Cereals$carbo)
+kurtosis(Cereals$sugars)
+kurtosis(Cereals$potass)
+kurtosis(Cereals$vitamins)
+kurtosis(Cereals$shelf)
+kurtosis(Cereals$weight)
+kurtosis(Cereals$cups)
+kurtosis(Cereals$rating)
+```
+# To get Percentages of values(n) in Rows and Columns---
+```{r}
+# For this purpose--Only select columns having Numeric values
+Cereals[, 4:16]
+# Or---
+cereal_val<-select(Cereals,calories:rating) # to select only the numeric values from the given aforesaid dataset
+cereal_val
+
+# Conversion of a Dataframe containing Numeric values to a Matrix---
+# cereal_val<-as.matrix(cereal_val)  
+# cereal_val
+
+# is.matrix(cereal_val) # To check/verify whether it is a Matrix or not
+
+# Conversion of a Data-frame to a Matrix is important especially if one wants to derive row and and column values in Percentages for the given values----
+
+library("rockchalk")
+# Syntax: pctable(y ~ x, data = dat)
+tab<-pctable(calories~mfr,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~type,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~protein,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~fat,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~sodium,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~fiber,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~carbo,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~sugars,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~potass,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~vitamins,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~shelf,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~weight,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~cups,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+tab<-pctable(calories~rating,data=Cereals)
+summary(tab, rowpct = TRUE, colpct = FALSE)
+
+```
+# Cross-tabulations---
+```{r}
+# 2-Way Cross Tabulation
+# The CrossTable( ) function in the gmodels package produces crosstabulations 
+# modeled after PROC FREQ in SAS or Crosstabs in SPSS.
+# # # ---Syntax:       CrossTable(mydata$myrowvar, mydata$mycolvar)--- # # # 
+library(gmodels)
+
+CrossTable(Cereals$name, Cereals$type)
+CrossTable(Cereals$mfr, Cereals$type)
+```
+# Feature Engineering---
+```{r}
+# To classify Calories into 3 different Categories---
+attach(Cereals)
+Cereals$calorie_group[calories > 121] <- "High Calories"
+Cereals$calorie_group[calories > 81 & calories <= 120] <- "Moderate Calories"
+Cereals$calorie_group[calories <= 80] <- "Low Calories"
+detach(Cereals)
+View(Cereals)
+
+# To change the order of the columns in a dataframe---
+names(Cereals)
+Cereals<-Cereals[,c(1:4,17,5:16)]
+View(Cereals)
+
+
+# To classify Sugar content in Cereal Products into 3 different Categories---
+
+summary(Cereals$sugars)
+
+attach(Cereals)
+Cereals$sugar_group[sugars > 8] <- "High Sugar Content"
+Cereals$sugar_group[sugars >= 6 & sugars <= 8] <- "Moderate Sugar Content"
+Cereals$sugar_group[sugars < 6] <- "Low Sugar Content"
+detach(Cereals)
+View(Cereals)
+
+# To change the order of the columns in a dataframe---
+names(Cereals)
+Cereals<-Cereals[,c(1:11,18,12:17)]
+View(Cereals)
+
+
+# To classify Customer Rating into 3 different Categories---
+attach(Cereals)
+Cereals$classified_rating[rating > 70] <- "High Rating"
+Cereals$classified_rating[rating > 45 & calories<= 70] <- "Moderate Rating"
+Cereals$classified_rating[rating <= 45] <- "Low Rating"
+detach(Cereals)
+View(Cereals)
+
+# To drop Columns from the Dataframe---
+
+# Syntax: 
+# df = subset(mydata, select = -c(x,z))
+# OR---
+# drop <- c("x","z")
+# df = mydata[,!(names(mydata) %in% c("x","z"))] 
+# Or---
+# drop <- c("x","z")
+# df = mydata[,!(names(mydata) %in% drop)]
+
+Cereals=subset(Cereals,select=-c(5,12))
+View(Cereals)
+
+# To delete/drop a column using dplyr package---
+# Syntax:
+# mydata2 = select(mydata, -a, -x, -y)
+
+library(dplyr)
+names(Cereals)
+Cereals<-select(Cereals, -17)
+View(Cereals)
+```
+# Correlations using Pearsons' Correlation (Parametric test), Kendall and Spearman's Correlation Coefficient Method (Non-Parametric test)---
+```{r}
+# A] Spearman's Correlation Coefficient Test (Non-Parametric test)---
+cor.test(Cereals$calories,Cereals$protein, method="spearman")
+cor.test(Cereals$calories,Cereals$fat, method="spearman")
+cor.test(Cereals$calories,Cereals$sodium, method="spearman")
+cor.test(Cereals$calories,Cereals$fiber, method="spearman")
+cor.test(Cereals$calories,Cereals$carbo, method="spearman")
+cor.test(Cereals$calories,Cereals$sugars, method="spearman")
+cor.test(Cereals$calories,Cereals$potass, method="spearman")
+cor.test(Cereals$calories,Cereals$vitamins, method="spearman")
+cor.test(Cereals$calories,Cereals$shelf, method="spearman")
+cor.test(Cereals$calories,Cereals$weight, method="spearman")
+cor.test(Cereals$calories,Cereals$cups, method="spearman")
+cor.test(Cereals$calories,Cereals$rating, method="spearman")
+
+# B] Kendall method (Non-Parametric test)---
+cor.test(Cereals$calories,Cereals$protein, method="kendall")
+cor.test(Cereals$calories,Cereals$fat, method="kendall")
+cor.test(Cereals$calories,Cereals$sodium, method="kendall")
+cor.test(Cereals$calories,Cereals$fiber, method="kendall")
+cor.test(Cereals$calories,Cereals$carbo, method="kendall")
+cor.test(Cereals$calories,Cereals$sugars, method="kendall")
+cor.test(Cereals$calories,Cereals$potass, method="kendall")
+cor.test(Cereals$calories,Cereals$vitamins, method="kendall")
+cor.test(Cereals$calories,Cereals$shelf, method="kendall")
+cor.test(Cereals$calories,Cereals$weight, method="kendall")
+cor.test(Cereals$calories,Cereals$cups, method="kendall")
+cor.test(Cereals$calories,Cereals$rating, method="kendall")
+
+# OR ---
+library(Kendall)
+round(cor(cereal_val, method="kendall"),2) 
+
+# C]Pearson's Correlation Co-efficient Test (Parametric Test) ---
+library(corrplot)
+col_numeric <- sapply(Cereals, is.numeric)
+numericalVars <- Cereals[,col_numeric]
+corrMat <- cor(numericalVars,method=c("pearson"))
+corrMat<-(round(corrMat,2))
+corrMat
+
+# To find Covariance between the variables---
+
+round(cov(corrMat, use="complete.obs"),2) 
+```
+# Correlograms---
+```{r}
+# Correlogram is used for generating Correlation Matrix.
+# Corrplot() is used to plot the graph of Correlation Matrix
+
+corrplot(corrMat, method="pie")
+corrplot(corrMat, method="circle")
+corrplot(corrMat, method="square")
+
+corrplot(corrMat, method="color")
+corrplot(corrMat, method="shade")
+corrplot(corrMat, method="number")
+
+corrplot.mixed(corrMat, tl.pos = "lt")
+corrplot.mixed(corrMat, tl.pos = "lt", diag = "u")
+corrplot.mixed(corrMat, tl.pos = "lt", diag = "l")
+corrplot.mixed(corrMat, tl.pos = "n")
+
+# Positive correlations are displayed in blue and negative correlations in 
+# red color. Color intensity and the size of the circle are proportional to 
+# the correlation coefficients.
+
+# Reordering the correlation matrix---
+# correlogram with hclust reordering
+corrplot(corrMat, order="hclust")
+
+# Combining correlogram with the significance test &
+# Computing the p-value of correlations
+
+# To compute the matrix of p-value, a custom R function is used where--- :
+
+# mat : is a matrix of data
+# ... : further arguments to pass to the native R cor.test function
+cor.mtest <- function(mat, ...) {
+  mat <- as.matrix(mat)
+  n <- ncol(mat)
+  p.mat<- matrix(NA, n, n)
+  diag(p.mat) <- 0
+  for (i in 1:(n - 1)) {
+    for (j in (i + 1):n) {
+      tmp <- cor.test(mat[, i], mat[, j], ...)
+      p.mat[i, j] <- p.mat[j, i] <- tmp$p.value
+    }
+  }
+  colnames(p.mat) <- rownames(p.mat) <- colnames(mat)
+  p.mat
+}
+
+# matrix of the p-value of the correlation
+p.mat <- round(cor.mtest(corrMat),2)
+p.mat
+head(p.mat[, 1:13])
+
+
+# To Add significance level to the correlogram
+# Or to Strike-Off Insignificant Values # according to the significance # level---------
+
+corrplot(corrMat, type="full", order="hclust", 
+         p.mat = p.mat, sig.level = 0.01)
+
+# OR----
+# To Leave blank on no significant coefficient
+corrplot(corrMat, type="full", order="hclust", 
+         p.mat = p.mat, sig.level = 0.01, insig = "blank")
+
+
+# To Customize the correlogram ----------------------
+
+col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+corrplot(corrMat, method="color", col=col(200),  
+         type="full", order="hclust", 
+         addCoef.col = "black", # Add coefficient of correlation
+         tl.col="maroon", tl.srt=45, #Text label color and rotation
+         # Combine with significance
+         p.mat = p.mat, sig.level = 0.01, insig = "blank", 
+         # hide correlation coefficient on the principal diagonal
+         diag=FALSE)
+
+# OR---
+col <- colorRampPalette(c("#7F0000", "red", "#FF7F00", "yellow", "white",
+                           "cyan", "#007FFF", "blue", "#00007F"))
+corrplot(corrMat, method="color", col=col(200),  
+         type="full", order="hclust", 
+         addCoef.col = "black", # Add coefficient of correlation
+         tl.col="maroon", tl.srt=45, #Text label color and rotation
+         # Combine with significance
+         p.mat = p.mat, sig.level = 0.01, insig = "blank", 
+         # hide correlation coefficient on the principal diagonal
+         diag=FALSE)
+
+# OR---
+
+col <- colorRampPalette(c("#67001F", "#B2182B", "#D6604D", "#F4A582",
+                           "#FDDBC7", "#FFFFFF", "#D1E5F0", "#92C5DE",
+                           "#4393C3", "#2166AC", "#053061"))
+corrplot(corrMat, method="color", col=col(200),  
+         type="full", order="hclust", 
+         addCoef.col = "black", # Add coefficient of correlation
+         tl.col="maroon", tl.srt=45, #Text label color and rotation
+         # Combine with significance
+         p.mat = p.mat, sig.level = 0.01, insig = "blank", 
+         # hide correlation coefficient on the principal diagonal
+         diag=FALSE)
+
+# OR---
+
+col <- colorRampPalette(c("red", "white", "blue")) 
+corrplot(corrMat, method="color", col=col(200),  
+         type="full", order="hclust", 
+         addCoef.col = "black", # Add coefficient of correlation
+         tl.col="maroon", tl.srt=45, #Text label color and rotation
+         # Combine with significance
+         p.mat = p.mat, sig.level = 0.01, insig = "blank", 
+         # hide correlation coefficient on the principal diagonal
+         diag=FALSE)
+
+
+# Thus the correlation of variables within the given sampling dataset  has 
+# been checked for and noted. 
+
+corrplot(corrMat, order = "AOE")
+corrplot(corrMat, order = "FPC")
+corrplot(corrMat, order = "alphabet")
+corrplot(corrMat, order = "hclust", addrect = 2)
+corrplot(corrMat, order = "hclust", addrect = 3,method= "number")
+corrplot(corrMat, order = "hclust", addrect = 3)
+```
+# Bar-plots---
+```{r}
+barplot(Cereals$calories, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "brown",
+        legend = rownames(Cereals$calories), ylim = c(50, 160))
+title(main = "Calories content in the Cereals", font.main=4)
+
+barplot(Cereals$protein, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "dark blue",
+        legend = rownames(Cereals$protein), ylim = c(1,6))
+title(main = "Protein content in the Cereals", font.main=4)
+
+barplot(Cereals$fat, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "black",
+        legend = rownames(Cereals$fat), ylim = c(1,4))
+title(main = "Fat content in the Cereals", font.main=4)
+
+barplot(Cereals$sodium, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "red",
+        legend = rownames(Cereals$sodium), ylim = c(0,290))
+title(main = "Sodium content in the Cereals", font.main=4)
+
+barplot(Cereals$fiber, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "purple",
+        legend = rownames(Cereals$fiber), ylim = c(0,9))
+title(main = "Fibre content in the Cereals", font.main=4)
+
+barplot(Cereals$carbo, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "orange",
+        legend = rownames(Cereals$carbo), ylim = c(9,23))
+title(main = "Carbohydrate content in the Cereals", font.main=4)
+
+barplot(Cereals$sugars, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "lavender",
+        legend = rownames(Cereals$sugars), ylim = c(0,15))
+title(main = "Sugar content in the Cereals", font.main=4)
+
+barplot(Cereals$potass, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "violet",
+        legend = rownames(Cereals$potass), ylim = c(25,280))
+title(main = "Potassium content in the Cereals", font.main=4)
+
+barplot(Cereals$vitamins, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "aquamarine",
+        legend = rownames(Cereals$vitamins), ylim = c(0,60))
+title(main = "Vitamins content in the Cereals", font.main=4)
+
+barplot(Cereals$shelf, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "yellow",
+        legend = rownames(Cereals$shelf), ylim = c(1,3))
+title(main = " Shelf placement of the Breakfast Cereals", font.main=4)
+
+barplot(Cereals$weight, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "peachpuff",
+        legend = rownames(Cereals$weight), ylim = c(1,2))
+title(main = "Cereals - Packaging Weight", font.main=4)
+
+barplot(Cereals$cups, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "tan",
+        legend = rownames(Cereals$cups), ylim = c(0,2))
+title(main = "Measurement - Cups per serving", font.main=4)
+
+barplot(Cereals$rating, beside = TRUE, angle = 15+10*1:5, density=60,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"),border = "yellow",
+        legend = rownames(Cereals$rating), ylim = c(18,94))
+title(main = "Cereals - Customer Rating Index", font.main=4)
+```
+# Pie-Charts---
+# Useful for Frequency of factors---
+```{r}
+pie(table(Cereals$mfr))
+pie(table(Cereals$type))
+pie(table(Cereals$calories))
+pie(table(Cereals$protein))
+pie(table(Cereals$fat))
+pie(table(Cereals$sugars))
+pie(table(Cereals$fiber))
+pie(table(Cereals$vitamins))
+pie(table(Cereals$shelf))
+pie(table(Cereals$weight))
+pie(table(Cereals$cups))
+```
+# Histograms---
+```{r}
+par(mfrow=c(1, 1))
+
+# To plot the Histogram-----
+
+hist(Cereals,probability=T,  main="Histogram of Cereals dataset")
+
+plotNormalHistogram(corrMat)
+
+hist(Cereals$calories, probability = T, main="Histogram - Cereals - Calories 
+     # Content")
+hist(Cereals$protein, col='purple', xlab="proteins", main="Histogram - Cereals
+     # - Protein Content")
+hist(Cereals$fat, col='tan', main="Histogram - Cereals - Fat Content")
+hist(Cereals$sodium, col='violet', main="Histogram - Cereals - Sodium
+     # Content")
+hist(Cereals$fiber,col='beige', main="Histogram - Cereals - Fiber Content")
+hist(Cereals$carbo,col='coral', main="Histogram - Cereals - Carbohydrates
+     # Content")
+hist(Cereals$sugars, col='khaki', main="Histogram - Cereals - Sugar Content")
+hist(Cereals$potass, col='magenta',main="Histogram - Cereals - Potassium
+     # Content")
+hist(Cereals$vitamins, col='aquamarine', main="Histogram - Cereals - Vitamins
+     # Content")
+hist(Cereals$shelf, col='light green', main="Histogram - Cereals - Shelf
+     # Depiction")
+hist(Cereals$weight,col='sky blue', main="Histogram - Cereals - Product
+     # Weightage")
+hist(Cereals$cups, col='orange', main="Histogram - Cereals - Cups for
+     # Consumption")
+hist(Cereals$rating, col='chocolate', main="Histogram - Cereals - Rating")
+
+
+# Histogram for 1 way data---
+
+histogram(~ calories | type,
+          data=Cereals,
+          layout=c(1,2))      #  columns and rows of individual plots
+
+histogram(~ calories | mfr,
+          data=Cereals,
+          layout=c(1,1))      #  columns and rows of individual plots
+
+histogram(~ calories | calories,
+          data=Cereals,
+          layout=c(1,5))
+
+histogram(~ calories | protein,
+          data=Cereals,
+          layout=c(1,3))
+
+histogram(~ calories | fat,
+          data=Cereals,
+          layout=c(1,3))
+
+histogram(~ calories | vitamins,
+          data=Cereals,
+          layout=c(1,3))
+
+histogram(~ calories | fiber,
+          data=Cereals,
+          layout=c(1,3))
+
+histogram(~ calories | sugars,
+          data=Cereals,
+          layout=c(1,4))
+
+
+library(devtools)
+install_github("easyGgplot2", "kassambara")
+library(easyGgplot2)
+
+calories_content=Cereals$calories
+plotNormalHistogram(calories_content, col='yellow')
+
+protein_content=Cereals$protein
+plotNormalHistogram(protein_content, col='ivory')
+
+fat_content=Cereals$fat
+plotNormalHistogram(fat_content,col='dark green')
+
+sodium_content=Cereals$sodium
+plotNormalHistogram(sodium_content,col='aquamarine')
+
+fiber_Content=Cereals$fiber
+plotNormalHistogram(fiber_Content, col='orange')
+
+carbo_content=Cereals$carbo
+plotNormalHistogram(carbo_content, col='grey')
+
+sugars_content=Cereals$sugars
+plotNormalHistogram(sugars_content, col='sea green')
+
+potass_content=Cereals$potass
+plotNormalHistogram(potass_content, col='maroon')
+
+vitamins_content=Cereals$vitamins
+plotNormalHistogram(vitamins_content, col='bisque')
+
+shelf_placement=Cereals$shelf
+plotNormalHistogram(shelf_placement, col='tan')
+
+package_weight=Cereals$weight
+plotNormalHistogram(package_weight, col='turquoise')
+
+serving_size_in_cups=Cereals$cups
+plotNormalHistogram(serving_size_in_cups, col='peachpuff')
+
+customer_rating=Cereals$rating
+plotNormalHistogram(customer_rating, col='slategray2')
+```
+# Stem and Leaf Plots---
+```{r}
+stem(log(Cereals$calories))
+stem(log(Cereals$protein))
+stem(log(Cereals$fat))
+stem(log(Cereals$sodium))
+stem(log(Cereals$fiber))
+stem(log(Cereals$carbo))
+stem(log(Cereals$sugars))
+stem(log(Cereals$potass))
+stem(log(Cereals$vitamins))
+stem(log(Cereals$shelf))
+stem(log(Cereals$weight))
+stem(log(Cereals$cups))
+stem(log(Cereals$rating))
+```
+# Scatter Plots---
+```{r}
+# To generate Scatter Plots----
+# Simple Scatterplot
+
+plot(Cereals$protein, Cereals$calories, main="Scatter Plot", xlab="Proteins", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$protein, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$protein, Cereals$calories),col="dark green")
+
+plot(Cereals$fat, Cereals$calories, main="Scatter Plot", xlab="Fat_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$fat, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$fat, Cereals$calories),col="dark green")
+
+plot(Cereals$sodium, Cereals$calories, main="Scatter Plot", xlab="Sodium_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$sodium, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$sodium, Cereals$calories),col="dark green")
+
+plot(Cereals$fiber, Cereals$calories, main="Scatter Plot", xlab="Fibre_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$fiber, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$fiber, Cereals$calories),col="dark green")
+
+plot(Cereals$fiber, Cereals$calories, main="Scatter Plot", xlab="Fibre_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$fiber, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$fiber, Cereals$calories),col="dark green")
+
+plot(Cereals$carbo, Cereals$calories, main="Scatter Plot", xlab="Carbohydrate_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$carbo, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$carbo, Cereals$calories),col="dark green")
+
+plot(Cereals$sugars, Cereals$calories, main="Scatter Plot", xlab="Sugar_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$sugars, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$sugars, Cereals$calories),col="dark green")
+
+plot(Cereals$potass, Cereals$calories, main="Scatter Plot", xlab="Potassium_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$potass, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$potass, Cereals$calories),col="dark green")
+
+plot(Cereals$vitamins, Cereals$calories, main="Scatter Plot", xlab="Vitamin_Content", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$vitamins, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$vitamins, Cereals$calories),col="dark green")
+
+plot(Cereals$shelf, Cereals$calories, main="Scatter Plot", xlab="Shelf_Placement", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$shelf, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$shelf, Cereals$calories),col="dark green")
+
+plot(Cereals$weight, Cereals$calories, main="Scatter Plot", xlab="Shelf_Placement", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$weight, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$weight, Cereals$calories),col="dark green")
+
+plot(Cereals$cups, Cereals$calories, main="Scatter Plot", xlab="Serving Size (in cups)", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$cups, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$cups, Cereals$calories),col="dark green")
+
+plot(Cereals$rating, Cereals$calories, main="Scatter Plot", xlab="Customer Rating Indices", ylab="Calories", pch="*", col="red", cex=2)
+abline(lm(Cereals$calories ~ Cereals$rating, data=Cereals), col="blue", lwd=3, lty=2)
+lines(lowess(Cereals$rating, Cereals$calories),col="dark green")
+
+
+# Scatterplot Matrices---
+
+# Basic Scatterplot Matrix
+pairs(~calories+protein+fat+sodium +fiber+carbo+sugars+potass+vitamins,data=Cereals,
+   main="Cereals - Nutritional_Content_Scatterplot_Matrix")
+
+pairs(~calories+shelf+weight+cups+rating,data=Cereals,
+   main="Simple Scatterplot Matrix")
+
+```
+# Box & Whisker Plots---
+```{r}
+boxplot(Cereals$calories~Cereals$mfr,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Manufacturer',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$type,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Type of Breakfast Cereals',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$protein,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Protein',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$fat,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Fats',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$sodium,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Sodium',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$fiber,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Fiber',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$carbo,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Carbohydrates',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$sugars,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Sugar',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$potass,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Potassium',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$vitamins,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Vitamins',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$shelf,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Shelf',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$weight,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Weightage',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$cups,notch=TRUE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset",
+        xlab='Cups per Serving',ylab='Calories')
+
+boxplot(Cereals$calories~Cereals$rating,notch=FALSE, 
+        col=(c("gold","darkgreen")),
+        main="Cereals_dataset", 
+        xlab='Customer Rating',ylab='Calories')
+```
+# Dot Plots---
+```{r}
+require(ggplot2)
+library(ggplot2)
+library(scales)
+
+###
+# Dot Plots---
+ggplot(Cereals, aes(x=mfr, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=mfr, xend=mfr, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Calories content across Breakfast Cereals by different Manufacturers", caption = "source: Cereals_Dataset") 
+
+ggplot(Cereals, aes(x=type, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=type, xend=type, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Calories content versus Cereal Types",       
+     caption = "source: Cereals_Dataset") 
+
+ggplot(Cereals, aes(x=protein, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=protein, xend=protein, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Proteins and corresponding Calories
+     Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=fat, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=fat, xend=fat, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Fats and corresponding Calories
+     Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=sodium, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=sodium, xend=sodium, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Sodium and corresponding Calories
+     Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=fiber, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=fiber, xend=fiber, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Fibre and corresponding Calories
+     Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=carbo, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=carbo, xend=carbo, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Carbohydrates and corresponding
+     Calories Content", caption = "source: Cereals_Dataset")
+
+
+ggplot(Cereals, aes(x=sugars, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=sugars, xend=sugars, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Sugar and corresponding Calories
+     Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=potass, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=potass, xend=potass, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Potassium and corresponding
+     Calories Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=vitamins, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=vitamins, xend=vitamins, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Vitamins and corresponding
+     Calories Content", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=shelf, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=shelf, xend=shelf, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Cereals - Positioning and Floor Placement",
+     caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=weight, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=weight, xend=weight, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Breakfast Cereal Products - Weightage of the
+     Package", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=cups, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=cups, xend=cups, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="Breakfast Cereal Products - Measurement- Cups
+     per Serving", caption = "source: Cereals_Dataset")
+
+ggplot(Cereals, aes(x=rating, y=calories),) + 
+  geom_point(col="tomato2", size=4) +   # Draw points
+  geom_segment(aes(x=rating, xend=rating, 
+                   y=min(calories), yend=max(calories)), 
+                   linetype="dashed", size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", subtitle="A Glance - Customer Rating Indices of
+     Breakfast Cereal Products", caption = "source: Cereals_Dataset")
+
+# Dot plot with mean point---
+library(devtools)
+library(ggplot2)
+install_github("easyGgplot2", "kassambara")
+library(easyGgplot2)
+
+ggplot2.dotplot(data=Cereals, xName='protein',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="bisque2", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='fat',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="yellow", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='sodium',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="orange", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='fiber',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="light coral", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='carbo',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="peachpuff", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='sugars',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="light blue", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='potass',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="light green", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='vitamins',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="aquamarine", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='shelf',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="sky blue", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='weight',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="sea green", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='cups',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="pink", gridColor="white")
+
+ggplot2.dotplot(data=Cereals, xName='rating',yName='calories',
+                addMean=TRUE, meanPointShape=23, meanPointSize=4,
+                meanPointColor="dark green", meanPointFill="red",
+                backgroundColor="lavender", gridColor="white")
+
+
+```
+# ggplots---
+```{r}
+ggplot(Cereals, aes(x = mfr, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = type, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = protein, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = fat, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = sodium, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = fiber, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = carbo, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = sugars, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = potass, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = vitamins, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = shelf, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = weight, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = cups, y = calories)) +  geom_point()
+ggplot(Cereals, aes(x = rating, y = calories)) +  geom_point()
+
+```
+# qq plots (Quantile-Quantile Plots) or Normality Plots---
+```{r}
+library(car)
+qqPlot(Cereals$calories,main='QQ Plot of Calories in Breakfast Cereals', col="purple")
+qqPlot(Cereals$protein,main='QQ Plot of Proteins in Breakast Cereals', col="purple")
+qqPlot(Cereals$fat,main='QQ Plot of Fats in Breakast Cereals', col="purple")
+qqPlot(Cereals$sodium,main='QQ Plot of Sodium in Breakast Cereals', col="purple")
+qqPlot(Cereals$fiber,main='QQ Plot of Fibre in Breakast Cereals', col="purple")
+qqPlot(Cereals$carbo,main='QQ Plot of Carbohydrates in Breakast Cereals', col="purple")
+qqPlot(Cereals$sugars,main='QQ Plot of Sugars in Breakast Cereals', col="purple")
+qqPlot(Cereals$potass,main='QQ Plot of Potassium in Breakast Cereals', col="purple")
+qqPlot(Cereals$vitamins,main='QQ Plot of Vitamins in Breakast Cereals', col="purple")
+qqPlot(Cereals$shelf,main='QQ Plot of Breakast Cereals Floor Placement', col="purple")
+qqPlot(Cereals$weight,main='QQ Plot of Breakast Cereals Packaged Weights', col="purple")
+qqPlot(Cereals$cups,main='QQ Plot of Cups per serving of Breakast Cereals', col="purple")
+qqPlot(Cereals$rating,main='QQ Plot of Breakast Cereals Rating by Customers', col="purple")
+
+qqnorm(corrMat, main="QQ Plot")
+qqline(corrMat)
+
+```
+# ggqq Plot---
+```{r}
+ggqqplot(Cereals$calories, color="yellow",palette = NULL)
+ggqqplot(Cereals$protein, color="tan",palette = NULL)
+ggqqplot(Cereals$fat, color="turquoise",palette = NULL)
+ggqqplot(Cereals$sodium, color="sky blue",palette = NULL)
+ggqqplot(Cereals$fiber, color="light green",palette = NULL)
+ggqqplot(Cereals$carbo, color="dark green",palette = NULL)
+ggqqplot(Cereals$sugars, color="orange",palette = NULL)
+ggqqplot(Cereals$potass, color="lavender",palette = NULL)
+ggqqplot(Cereals$vitamins, color="bisque3",palette = NULL)
+ggqqplot(Cereals$shelf, color="brown",palette = NULL)
+ggqqplot(Cereals$weight, color="sea green",palette = NULL)
+ggqqplot(Cereals$cups, color="aquamarine",palette = NULL)
+ggqqplot(Cereals$rating, color="coral",palette = NULL)
+
+```
+# Density Plots-
+```{r}
+# Filled Density Plot
+d <- density(Cereals$calories)
+plot(d, main="Breakfast Cereals - Calories")
+polygon(d, col="red", border="blue")
+
+d <- density(Cereals$protein)
+plot(d, main="Breakfast Cereals - Proteins")
+polygon(d, col="purple", border="blue")
+
+d <- density(Cereals$fat)
+plot(d, main="Breakfast Cereals - Fats")
+polygon(d, col="yellow", border="blue")
+
+d <- density(Cereals$sodium)
+plot(d, main="Breakfast Cereals - Sodium")
+polygon(d, col="violet", border="blue")
+
+d <- density(Cereals$fiber)
+plot(d, main="Breakfast Cereals - Fiber")
+polygon(d, col="sea green", border="blue")
+
+d <- density(Cereals$fiber)
+plot(d, main="Breakfast Cereals - Fiber")
+polygon(d, col="sea green", border="blue")
+
+d <- density(Cereals$carbo)
+plot(d, main="Breakfast Cereals - Carbohydrates")
+polygon(d, col="aquamarine", border="blue")
+
+d <- density(Cereals$sugars)
+plot(d, main="Breakfast Cereals - Sugar")
+polygon(d, col="coral", border="blue")
+
+d <- density(Cereals$potass)
+plot(d, main="Breakfast Cereals - Potassium")
+polygon(d, col="tan", border="blue")
+
+d <- density(Cereals$vitamins)
+plot(d, main="Breakfast Cereals - Vitamins")
+polygon(d, col="dark green", border="blue")
+
+d <- density(Cereals$shelf)
+plot(d, main="Breakfast Cereals - floor placement")
+polygon(d, col="pink", border="blue")
+
+d <- density(Cereals$weight)
+plot(d, main="Breakfast Cereals - Packaged Weights")
+polygon(d, col="brown", border="blue")
+
+d <- density(Cereals$cups)
+plot(d, main="Breakfast Cereals - Cups per sering")
+polygon(d, col="dark blue", border="blue")
+
+d <- density(Cereals$rating)
+plot(d, main="Breakfast Cereals - Customer Rating Indices")
+polygon(d, col="light green", border="blue")
+
+```
